@@ -25,6 +25,33 @@
 
 <script>
   angular.module('starter')
+    .config(function($stateProvider, $urlRouterProvider) {
+      $stateProvider
+        .state('main', {
+          url        : '/main',
+          abstract   : true,
+          templateUrl: 'modules/main.html'
+        })
+        .state('main.home', {
+          url  : '/home',
+          views: {
+            mainContent: {
+              templateUrl: 'modules/home.html'
+            }
+          }
+        })
+        .state('main.skill', {
+          url  : '/skill',
+          views: {
+            mainContent: {
+              templateUrl: 'modules/skillList.html'
+            }
+          }
+        })
+
+      $urlRouterProvider.otherwise('/main/home')
+
+    })
     .factory('NavigationFactory', function() {
       function list() {
         return [
