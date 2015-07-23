@@ -48,6 +48,15 @@
             }
           }
         })
+        .state('main.perform', {
+          url: '/perform',
+          views: {
+            mainContent: {
+              templateUrl: 'modules/performList.html'
+            }
+          }
+
+        })
 
       $urlRouterProvider.otherwise('/main/home')
 
@@ -74,14 +83,14 @@
       vm.navigation = NavigationFactory.list();
       vm.show = function(state) {
         $state.go(state);
-      $ionicHistory.nextViewOptions({
-        historyRoot : true
-      })
+        $ionicHistory.nextViewOptions({
+          historyRoot: true
+        })
       }
     })
 </script>
 
 <body ng-app="starter">
-<ion-nav-view></ion-nav-view>
+  <ion-nav-view></ion-nav-view>
 </body>
 </html>
