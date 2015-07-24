@@ -77,7 +77,7 @@
         list: list
       }
     })
-    .controller('NavCtrl', function(Navigation, $ionicHistory) {
+    .controller('NavCtrl', function(Navigation,$state, $ionicHistory) {
       var vm = this;
       vm.navigation = Navigation.list();
       vm.show = function(state) {
