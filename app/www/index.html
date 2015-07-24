@@ -25,6 +25,32 @@
 
 <script>
   angular.module('starter')
+    .config(function($stateProvider, $urlRouterProvider) {
+      $stateProvider
+        .state('main', {
+          url        : '/main',
+          abstract   : true,
+          templateUrl: 'modules/main.html'
+        })
+        .state('main.skill', {
+          url  : '/skill',
+          views: {
+            mainContent: {
+              templateUrl: 'modules/skillList.html'
+            }
+          }
+        })
+        .state('main.perform', {
+          url  : '/perform',
+          views: {
+            mainContent: {
+              templateUrl: 'modules/performList.html'
+            }
+          }
+        })
+
+      $urlRouterProvider.otherwise('/main/skill')
+    })
     .factory('Navigation', function() {
       function list() {
         return [
@@ -47,9 +73,9 @@
       var vm = this;
       vm.navigation = Navigation.list();
       vm.show = function(state) {
-        $state.go(state) ;
+        $state.go(state);
         $ionicHistory.nextViewOptions({
-          historyRoot : true
+          historyRoot: true
         })
       }
     })
