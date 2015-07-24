@@ -48,8 +48,16 @@
             }
           }
         })
+        .state('main.home', {
+          url : '/home',
+          views : {
+            mainContent : {
+              templateUrl : 'modules/home.html'
+            }
+          }
+        })
 
-      $urlRouterProvider.otherwise('/main/skill')
+      $urlRouterProvider.otherwise('/main/home')
     })
     .factory('Navigation', function() {
       function list() {
