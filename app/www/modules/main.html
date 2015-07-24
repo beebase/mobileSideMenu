@@ -7,7 +7,7 @@
     <ion-content>
       <ion-list ng-controller="NavCtrl as n">
         <ion-item ng-repeat="nav in n.navigation"
-                  ng-click="show(nav.state)"
+                  ng-click="n.show(nav.state)"
                   menu-close>
           {{nav.title}}
         </ion-item>
@@ -17,7 +17,7 @@
 
   <!--CONTENT-->
   <ion-side-menu-content>
-    <ion-nav-bar>
+    <ion-nav-bar class="bar-dark">
       <ion-nav-back-button></ion-nav-back-button>
       <ion-nav-buttons side="left">
         <button class="button button-clear button-icon ion-navicon"
