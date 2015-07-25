@@ -49,13 +49,12 @@
           }
         })
         .state('main.perform', {
-          url: '/perform',
+          url  : '/perform',
           views: {
             mainContent: {
               templateUrl: 'modules/performList.html'
             }
           }
-
         })
 
       $urlRouterProvider.otherwise('/main/home')
@@ -68,19 +67,14 @@
           {title: 'Perform', state: 'main.perform'},
           {title: 'Teams', state: 'main.team'},
           {title: 'Media', state: 'main.media'},
-          {title: 'Competitions', state: 'main.competition'},
-          {title: 'About', state: 'main.about'},
-          {title: 'Settings', state: 'main.settings'}
-        ]
+          {title: 'Competitions', state: 'main.competition'}]
       }
 
-      return {
-        list: list
-      };
+      $urlRouterProvider.otherwise('/main/home')
     })
-    .controller('NavCtrl', function(NavigationFactory, $state, $ionicHistory) {
+    .controller('NavCtrl', function(Navigation, $state, $ionicHistory) {
       var vm = this;
-      vm.navigation = NavigationFactory.list();
+      vm.navigation = Navigation.list();
       vm.show = function(state) {
         $state.go(state);
         $ionicHistory.nextViewOptions({
