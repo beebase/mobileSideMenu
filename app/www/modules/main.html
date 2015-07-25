@@ -6,6 +6,7 @@
     </ion-header-bar>
     <ion-content>
       <ion-list ng-controller="NavCtrl as n">
+        <ion-item>{{n.appVersion}}</ion-item>
         <ion-item ng-repeat="nav in n.navigation"
                   ng-click="n.show(nav.state)"
                   menu-close>

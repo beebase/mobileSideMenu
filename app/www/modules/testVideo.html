@@ -1,0 +1,20 @@
+<ion-view>
+  <ion-content ng-controller="VideoTestCtrl">
+    <button class="button button-stable "
+            ng-click="download()" >download</button>
+    <button class="button button-stable "
+            ng-click="showAlert()" >alert</button>
+    <div >progress: {{downloadProgress}}</div>
+    <div >result:  {{result}}</div>
+
+    <br/><br/>
+
+    <button class="button button-stable "
+            ng-click="play()" >play</button>
+    <video width="320" height="240" controls>
+      <source ng-src="./media/testing.mp4" type="video/mp4">
+      <!--<source ng-src="./media/demonstration_140.mp4" type="video/mp4">-->
+      <source src="{{directory+'test.mp4'}}" type="video/mp4">
+    </video>
+  </ion-content>
+</ion-view>
