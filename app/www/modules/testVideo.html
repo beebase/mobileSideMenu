@@ -14,18 +14,16 @@
     <button class="button button-stable "
             ng-click="play()" >play</button>
     <video width="320" height="240" controls>
-      <source ng-src="./media/testing.mp4" type="video/mp4">
-      <!--<source ng-src="./media/demonstration_140.mp4" type="video/mp4">-->
+      <!--<source ng-src="./media/testing.mp4" type="video/mp4">-->
+      <source ng-src="./media/demonstration_140.mp4" type="video/mp4">
       <source src="{{directory+'test.mp4'}}" type="video/mp4">
     </video>
 
-
-    //songs
     <div class="row">
       <div > {{srcarray | json}}</div>
       <h1>songs</h1>
         <button class="button button-stable"
-                onClick="getList()">
+                ng-click="getList()">
           Select Audio
         </button>
 <!--        <button
