@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <title></title>
 
   <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -84,7 +85,7 @@
       }
     })
     .controller('NavCtrl',
-    function(NavigationFactory, $state, $ionicHistory, $cordovaDialogs) {
+    function(NavigationFactory, $state, $ionicHistory) {
       var vm = this;
       vm.appVersion = '';
       vm.navigation = NavigationFactory.list();
@@ -99,16 +100,12 @@
     .controller('VideoTestCtrl',
     function($scope, $timeout, $cordovaFileTransfer, $cordovaDialogs) {
 
-      $scope.directory = cordova.file.documentsDirectory;
-      console.log($scope.directory)
-
-      $scope.result = '';
       $scope.showAlert = function() {
         $cordovaDialogs.alert('message', 'title', 'button name')
           .then(function() {
             // callback success
           });
-      }
+      };
       $scope.download = function() {
         document.addEventListener('deviceready', function() {
 
@@ -130,8 +127,36 @@
             });
 
         }, false)
-      }
+      };
 
+
+//      SONGS
+      var src;
+      $scope.srcarray = [];
+      $scope.getList = function() {
+        document.addEventListener('deviceready', function() {
+          console.log('getting songlist...');
+          $scope.songList = window.plugins.iOSAudioPicker.getAudio(plsuccess,
+            delError, 'true', 'false');
+        }, false);
+
+        function plsuccess(data) {
+          console.log("Data = "+JSON.stringify(data));
+          src = data[0].exportedurl;
+          src = src.replace("file://localhost/", "/");
+          src = decodeURI(src);
+          console.log(src);
+          var slen = data.length;
+          console.log(slen);
+          for (var i = 0; i < slen; i++) {
+            var fileurl = data[i].exportedurl;
+            fileurl = fileurl.replace("file:///", "/");
+            fileurl = decodeURI(fileurl);
+            $scope.srcarray.push(fileurl);
+          }
+        }
+
+      }
 
     });
 
